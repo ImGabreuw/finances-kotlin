@@ -1,0 +1,29 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/finances?createDatabaseIfNotExist=true
+    username: postgres
+    password: root
+    name: FinacesDataSource
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: org.postgresql.Driver
+
+    hikari:
+      pool-name: FinanacesPool
+      connection-test-query: SELECT now()
+      maximum-pool-size: 5
+      minimum-idle: 1
+      connection-timeout: 20000
+      idle-timeout: 10000
+
+  jpa:
+    show-sql: true
+
+    generate-ddl: true
+
+    hibernate:
+      ddl-auto: create-drop
+
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQL9Dialect
